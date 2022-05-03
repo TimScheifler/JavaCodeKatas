@@ -1,4 +1,7 @@
+package wardrobe.scheifle.com;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
@@ -9,8 +12,7 @@ public class Application {
     private static final ArrayList<ArrayList<Element>> cheapestProducts = new ArrayList<>();
 
     public static void main(String[] args) {
-
-        ArrayList<Element> elements = new ArrayList();
+        List<Element> elements = new ArrayList<>();
 
         Element a = new Element(50, 59);
         Element b = new Element(75, 62);
@@ -28,16 +30,15 @@ public class Application {
         printCheapestCombination(allCombinations);
     }
 
-    private static void determineCombinations(final ArrayList<Element> elements) {
+    private static void determineCombinations(final List<Element> elements) {
         recursiveCheck(elements, 0, new ArrayList<>());
     }
 
-    private static void recursiveCheck(final ArrayList<Element> elements, final int value, final ArrayList<Element> currentElementCombination) {
-        int copyValue = value;
+    private static void recursiveCheck(final List<Element> elements, final int value, final ArrayList<Element> currentElementCombination) {
 
         for (int i = 0; i < elements.size(); i++) {
             Element currentElement = elements.get(i);
-            int result = copyValue + currentElement.getLength();
+            int result = value + currentElement.length();
             currentElementCombination.add(currentElement);
             if (result < ROOM_SIZE) {
                 recursiveCheck(elements, result, currentElementCombination);
@@ -70,7 +71,7 @@ public class Application {
     private static int getTotalPriceOfCombination(ArrayList<Element> combination) {
         int totalPrice = 0;
         for(Element element : combination){
-            totalPrice += element.getPrice();
+            totalPrice += element.price();
         }
         return totalPrice;
     }
@@ -84,8 +85,8 @@ public class Application {
     private static void printCombination(ArrayList<Element> combination) {
         int totalPrice = 0;
         for (Element element : combination) {
-            System.out.print(element.getLength() + " | ");
-            totalPrice += element.getPrice();
+            System.out.print(element.length() + " | ");
+            totalPrice += element.price();
         }
 
         System.out.println("-> " + totalPrice + " USD");
