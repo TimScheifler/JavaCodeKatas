@@ -20,3 +20,17 @@ Write a second function that checks which of the resulting combinations is the c
 
 ## Original:
 https://kata-log.rocks/configure-wardrobe-kata
+
+
+## Further idea
+1. It might be better (better readability) if I would use another Object-Type (Wardrobe), which includes
+an ArrayList<>() of Elements including their total price, so that I could determine the price easier.
+
+2. I am getting duplicates: 
+```
+----Cheapest Combinations----
+75 | 75 | 100 | -> 214 USD
+75 | 100 | 75 | -> 214 USD
+100 | 75 | 75 | -> 214 USD
+```
+This is not an problem since they are still possible combinations. It still is kinda redundant.
